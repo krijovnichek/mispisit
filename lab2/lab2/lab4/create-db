@@ -1,0 +1,5 @@
+#! /bin/bash
+
+dropdb --username=postgres "telephonedir1"
+createdb --username=postgres "telephonedir1"
+psql --username=postgres -d "telephonedir1" -f ./telephonedir.sql

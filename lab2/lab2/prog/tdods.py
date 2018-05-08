@@ -48,7 +48,7 @@ def save(telephoneDir, subdivision, collaborator, number, telephoneType):
   table.addElement(TableColumn(numbercolumnsrepeated=2,stylename=style2))
   table.addElement(TableColumn(numbercolumnsrepeated=4,stylename=style6))
 
-  row((u"телефон", u"код сотр.", u"фамилия", u"имя", u"отчество", u"подразделение", u"тип тел."))
+  row((u"телефон", u"фамилия", u"имя", u"отчество", u"подразделение", u"тип тел."))
 
   def find(c, subdivision):
     if c in subdivision.collaborators:
@@ -95,7 +95,7 @@ def save(telephoneDir, subdivision, collaborator, number, telephoneType):
                                                    lambdaTelephoneType(telephone), tmpDir)
   print subdivision, telephoneType, collaborator, number
   for r in tmpDir:
-    row((r.telephone.number, r.collaborator.code, r.collaborator.family.decode("utf-8"), r.collaborator.name.decode("utf-8"), r.collaborator.patronym.decode("utf-8"), find(r.collaborator, telephoneDir.subdivision), r.telephone.type.name.decode("utf-8")))
+    row((r.telephone.number, r.collaborator.family.decode("utf-8"), r.collaborator.name.decode("utf-8"), r.collaborator.patronym.decode("utf-8"), find(r.collaborator, telephoneDir.subdivision), r.telephone.type.name.decode("utf-8")))
   
   textdoc.spreadsheet.addElement(table)
   textdoc.save("telephonedir.ods")

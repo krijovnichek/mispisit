@@ -157,6 +157,6 @@ def run(telephoneDir):
 
 if __name__ == '__main__':
   import tdods
-  os.system("fuser -k 8080/tcp")
+  os.system("fuser -k {0}/tcp".format(PORT))
   telephoneDir = tdcsv.load()
   run(telephoneDir)

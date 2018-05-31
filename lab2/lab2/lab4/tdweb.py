@@ -10,8 +10,9 @@ import hashlib, uuid
 from Cheetah.Template import Template
 import cherrypy
 from cherrypy.lib import sessions, static
-import tdcsv
+# import tdcsv
 import tdods
+import tddb
 
 localDir = os.path.dirname(__file__)
 absDir = os.path.join(os.getcwd(), localDir)
@@ -152,11 +153,10 @@ conf = {
 def run(telephoneDir):
   Root.prepare(telephoneDir)
   cherrypy.tree.mount(root, config=conf)
-  #cherrypy.quickstart()
   cherrypy.engine.start()
 
 if __name__ == '__main__':
   import tdods
   os.system("fuser -k {0}/tcp".format(PORT))
-  telephoneDir = tdcsv.load()
+  telephoneDir = tddb.load()
   run(telephoneDir)
